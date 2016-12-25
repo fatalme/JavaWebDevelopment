@@ -11,7 +11,7 @@
 </head>
 <body>
 <h3>Welcome, Enter The Employee Details</h3>
-<form:form method="POST" action="/formlib/addEmployee" modelAttribute="employee">
+<form:form method="POST" action="/formlib/employee" modelAttribute="employee">
     <table>
         <tr>
             <td><form:label path="name">Name</form:label></td>
@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <td><form:label path="password">Password</form:label></td>
-            <td><form:password path="password"/></td>
+            <td><form:password path="password"/></td><td><form:errors path="password"/></td>
         </tr>
         <tr>
             <td><input type="submit" value="Submit"/></td>

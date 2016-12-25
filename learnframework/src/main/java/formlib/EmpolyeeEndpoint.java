@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import javax.validation.Valid;
 
 /**
@@ -31,11 +32,11 @@ public class EmpolyeeEndpoint {
         //return "WEB-INF/view/submitEmployee.html";
     }
 
-    @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
-    public String registerEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result, ModelMap model){
+    @RequestMapping(value = "/employee", method = RequestMethod.POST)
+    public String registerEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult result, ModelMap model){ //@ModelAttribute("employee")
 
         if(result.hasErrors())
-            return "error";
+            return "submitEmployee";
         model.addAttribute("id", employee.id);
         model.addAttribute("name", employee.name);
         model.addAttribute("contactNumber", employee.contactNumber);

@@ -1,6 +1,9 @@
 package formlib;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by nm on 12/24/2016.
@@ -37,6 +40,7 @@ public class Employee {
     long contactNumber;
 
     @NotEmpty
+    @NotNull
     public String getPassword() {
         return password;
     }
