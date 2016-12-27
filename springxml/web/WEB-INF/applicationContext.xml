@@ -3,13 +3,27 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:myns="http://edu.uiuc.com.ms/schema/myns"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-        http://edu.uiuc.com.ms/schema/myns http://edu.uiuc.com.ms/schema/myns/myns.xsd">
+        http://edu.uiuc.com.ms/schema/myns http://edu.uiuc.com.ms/schema/myns/myns.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <context:component-scan base-package="extensibleXMLAuthoring">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <context:property-placeholder location="classpath:META-INF/sample.properties" order="1" ignore-unresolvable="true" />
+
     <myns:dateformat id="defaultDateFormat" pattern="yyyy-MM-dd HH:mm" lenient="true"/>
+    <bean id="client" class="util.Client">
+        <property name="persistenceContextType" value="TRANSACTION" />
+        <property name="isolation">
+            <util:constant static-field="java.sql.Connection.TRANSACTION_SERIALIZABLE"/>
+        </property>
+    </bean>
+
+    <util:property-path path="client.isolation" id="level"/>
+    <bean id="aproperty" class="java.lang.String">
+        <constructor-arg value="${a}"/>
+    </bean>
 </beans>

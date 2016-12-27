@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %><%--
   Created by IntelliJ IDEA.
@@ -15,5 +16,9 @@
 <jsp:useBean id="defaultDateFormat" class="java.text.SimpleDateFormat" scope="application">
     <%=defaultDateFormat.format(new Date())%>
 </jsp:useBean>
+
+<spring:message message="haha">
+    <spring:argument>xixi</spring:argument>
+</spring:message>
 </body>
 </html>
